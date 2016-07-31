@@ -1,0 +1,27 @@
+{
+  "name": "img-compress-loader",
+  "version": "0.1.0",
+  "description": "Image compressor loader for webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dickeylth/img-compress-loader.git"
+  },
+  "keywords": [
+    "image",
+    "compress",
+    "webpack"
+  ],
+  "author": "dickeylth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dickeylth/img-compress-loader/issues"
+  },
+  "homepage": "https://github.com/dickeylth/img-compress-loader#readme",
+  "dependencies": {
+    "shelljs": "^0.7.0"
+  }
+}
