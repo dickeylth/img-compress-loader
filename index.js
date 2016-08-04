@@ -51,13 +51,18 @@ module.exports = function (content) {
   var imgPath = this.resourcePath;
   var imgExt = path.extname(imgPath);
 
-  // 先把原图重命名一下, 做好备份
-  var recoverLocalPath = path.join(path.dirname(imgPath), path.basename(imgPath).replace(imgExt, '.orig.' + imgExt.substr(1)));
-  fs.renameSync(imgPath, recoverLocalPath);
+  if (/jp(e?)g|gif|png/.test(imgExt)) {
 
-  // 压缩图片覆盖原文件名
-  var verbose = process.argv.indexOf('--verbose') != -1;
-  compressor(recoverLocalPath, imgPath, verbose);
+    // 仅处理 jpg/jpge/gif/png 类型图片, 避免误伤 svg
+
+    // 先把原图重命名一下, 做好备份
+    var recoverLocalPath = path.join(path.dirname(imgPath), path.basename(imgPath).replace(imgExt, '.orig.' + imgExt.substr(1)));
+    fs.renameSync(imgPath, recoverLocalPath);
+
+    // 压缩图片覆盖原文件名
+    var verbose = process.argv.indexOf('--verbose') != -1;
+    compressor(recoverLocalPath, imgPath, verbose);
+  }
 
   callback(null, fs.readFileSync(imgPath));
 };
