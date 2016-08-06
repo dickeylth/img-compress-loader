@@ -1,6 +1,6 @@
 {
   "name": "img-compress-loader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Image compressor loader for webpack",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/dickeylth/img-compress-loader#readme",
   "dependencies": {
+    "md5-file": "^3.1.1",
     "shelljs": "^0.7.0"
   }
 }

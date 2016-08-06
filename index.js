@@ -1,6 +1,8 @@
 /**
  * Created by 弘树<tiehang.lth@alibaba-inc.com> on 16/6/12.
  */
+"use strict";
+
 var shell = require('shelljs');
 var path = require('path');
 var fs = require('fs');
@@ -55,14 +57,24 @@ module.exports = function (content) {
 
     // 仅处理 jpg/jpge/gif/png 类型图片, 避免误伤 svg
 
-    // 先把原图重命名一下, 做好备份
-    var recoverLocalPath = path.join(path.dirname(imgPath), path.basename(imgPath).replace(imgExt, '.orig.' + imgExt.substr(1)));
-    fs.renameSync(imgPath, recoverLocalPath);
-
-    // 压缩图片覆盖原文件名
+    // 压缩图片到 .min
     var verbose = process.argv.indexOf('--verbose') != -1;
-    compressor(recoverLocalPath, imgPath, verbose);
-  }
+    var compressDestPath = path.join(path.dirname(imgPath), path.basename(imgPath).replace(imgExt, '.min.' + imgExt.substr(1)));
+    compressor(imgPath, compressDestPath, verbose);
 
-  callback(null, fs.readFileSync(imgPath));
+    // 替换前检查 md5
+    const md5File = require('md5-file');
+    var currentFileMd5 = md5File.sync(imgPath);
+    var newMinFileMd5 = md5File.sync(compressDestPath);
+    if (newMinFileMd5 != currentFileMd5) {
+      // 压缩后的图片和当前图片 md5 不一致才复制覆盖, 否则不处理, 避免死循环触发 webpack 重复构建
+      fs.unlinkSync(imgPath);
+      fs.renameSync(compressDestPath, imgPath);
+    } else {
+      fs.unlinkSync(compressDestPath);
+    }
+    callback(null, fs.readFileSync(imgPath));
+  } else {
+    callback(null, content);
+  }
 };

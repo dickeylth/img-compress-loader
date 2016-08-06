@@ -28,4 +28,6 @@ webpack.config.js:
 ## History
 
 - [0.1.0]
-    - init version.
+	- init version.
+- [0.1.2]
+	- bugfix for dead loop img compress.
