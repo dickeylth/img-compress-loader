@@ -31,3 +31,5 @@ webpack.config.js:
 	- init version.
 - [0.1.2]
 	- bugfix for dead loop img compress.
+- [0.1.3]
+	- img compress lib install to node_modules locally.
