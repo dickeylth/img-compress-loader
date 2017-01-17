@@ -1,5 +1,5 @@
 /**
- * Created by 弘树<tiehang.lth@alibaba-inc.com> on 16/6/12.
+ * Created by 弘树<dickeylth@gmail.com> on 16/6/12.
  */
 "use strict";
 

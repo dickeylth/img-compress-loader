@@ -4,9 +4,9 @@
 
 ## Support Images
 
-- .png -> `optipng`
-- .jpg/.jpeg -> `jpegtran`
-- .gif -> `gifsicle`
+- .png -> [`optipng`](https://www.npmjs.org/package/optipng-bin)
+- .jpg/.jpeg -> [`jpegtran`](https://www.npmjs.com/package/jpegtran-bin)
+- .gif -> [`gifsicle`](https://www.npmjs.com/package/gifsicle)
 
 ## Usage
 
