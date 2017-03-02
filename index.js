@@ -7,9 +7,9 @@ const shell = require('shelljs');
 const path = require('path');
 const fs = require('fs');
 
-const optipng = require('./optipng').path();
-const gifsicle = require('./gifsicle').path();
-const jpegtran = require('./jpegtran').path();
+const optipng = require('./lib/optipng').path();
+const gifsicle = require('./lib/gifsicle').path();
+const jpegtran = require('./lib/jpegtran').path();
 
 const compressor = (imgPath, imgDestPath, verbose) => {
   let isValidImageExt = true;
