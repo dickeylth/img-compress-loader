@@ -1,6 +1,6 @@
 {
   "name": "img-compress-loader",
-  "version": "0.1.5-rc.1",
+  "version": "0.1.5",
   "description": "Image compressor loader for webpack",
   "main": "index.js",
   "scripts": {
