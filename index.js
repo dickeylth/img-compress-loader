@@ -7,6 +7,10 @@ const shell = require('shelljs');
 const path = require('path');
 const fs = require('fs');
 
+const optipng = require('./optipng').path();
+const gifsicle = require('./gifsicle').path();
+const jpegtran = require('./jpegtran').path();
+
 const compressor = (imgPath, imgDestPath, verbose) => {
   let isValidImageExt = true;
   let imgExt = path.extname(imgPath).substr(1);
@@ -18,14 +22,14 @@ const compressor = (imgPath, imgDestPath, verbose) => {
   let execPath = path.join(__dirname, 'node_modules', '.bin');
   switch (imgExt) {
     case 'png':
-      shell.exec(path.join(execPath, 'optipng') + ' ' +  imgPath + ' -out ' + imgDestPath, shellOption);
+      shell.exec(optipng + ' ' +  imgPath + ' -out ' + imgDestPath, shellOption);
       break;
     case 'jpeg':
     case 'jpg':
-      shell.exec(path.join(execPath, 'jpegtran') + ' -optimize -progressive -outfile ' + imgDestPath + ' ' + imgPath, shellOption);
+      shell.exec(jpegtran + ' -optimize -progressive -outfile ' + imgDestPath + ' ' + imgPath, shellOption);
       break;
     case 'gif':
-      shell.exec(path.join(execPath, 'gifsicle') + ' -o ' + imgDestPath + ' ' + imgPath, shellOption);
+      shell.exec(gifsicle + ' -o ' + imgDestPath + ' ' + imgPath, shellOption);
       break;
     default:
       isValidImageExt = false;
