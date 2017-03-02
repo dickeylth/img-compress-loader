@@ -33,3 +33,5 @@ webpack.config.js:
 	- bugfix for dead loop img compress.
 - [0.1.3]
 	- img compress lib install to node_modules locally.
+- [0.1.5]
+	- move common dependencies to speed up install.
