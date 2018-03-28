@@ -27,6 +27,8 @@ webpack.config.js:
 
 ## History
 
+- [0.2.0]
+  - switch back to original `gifsicle`, `jpegtran-bin` and `optipng-bin`.
 - [0.1.0]
 	- init version.
 - [0.1.2]

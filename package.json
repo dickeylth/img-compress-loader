@@ -1,10 +1,9 @@
 {
   "name": "img-compress-loader",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Image compressor loader for webpack",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node lib/install.js",
     "test": "mocha"
   },
   "repository": {
@@ -23,8 +22,10 @@
   },
   "homepage": "https://github.com/dickeylth/img-compress-loader#readme",
   "dependencies": {
-    "bin-wrapper": "^3.0.0",
+    "gifsicle": "^3.0.4",
+    "jpegtran-bin": "^3.2.0",
     "md5-file": "^3.1.1",
+    "optipng-bin": "^4.0.0",
     "shelljs": "^0.7.0"
   }
 }

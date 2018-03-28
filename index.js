@@ -7,9 +7,9 @@ const shell = require('shelljs');
 const path = require('path');
 const fs = require('fs');
 
-const optipng = require('./lib/optipng').path();
-const gifsicle = require('./lib/gifsicle').path();
-const jpegtran = require('./lib/jpegtran').path();
+const optipng = require('optipng-bin');
+const gifsicle = require('gifsicle');
+const jpegtran = require('jpegtran-bin');
 
 const compressor = (imgPath, imgDestPath, verbose) => {
   let isValidImageExt = true;
@@ -19,7 +19,6 @@ const compressor = (imgPath, imgDestPath, verbose) => {
   };
   // 先删除
   fs.existsSync(imgDestPath) && fs.unlinkSync(imgDestPath);
-  let execPath = path.join(__dirname, 'node_modules', '.bin');
   switch (imgExt) {
     case 'png':
       shell.exec(optipng + ' ' +  imgPath + ' -out ' + imgDestPath, shellOption);
